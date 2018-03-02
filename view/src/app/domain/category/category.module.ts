@@ -1,18 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Routes, RouterModule } from '@angular/router';
 import { CategoryService } from './category.service';
-import { HttpClientModule } from '@angular/common/http';
 import { CategoryListComponent } from './category-list/category-list.component';
 import { CategorySaveComponent } from './category-save/category-save.component';
-import { CategoryRouting } from './category-routing';
-import { Routes, RouterModule } from '@angular/router';
+import { CategoryRoutingModule } from './category-routing.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    HttpClientModule,
-    CategoryRouting,
-    RouterModule
+    RouterModule,
+    CategoryRoutingModule,
   ],
   declarations: [
     CategorySaveComponent,
