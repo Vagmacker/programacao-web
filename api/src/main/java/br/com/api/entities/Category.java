@@ -4,6 +4,9 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
+/**
+ * Classe de modelo referente a 'Categoria'.
+ */
 @Entity
 @Table(name = "categories")
 public class Category  implements Serializable {
