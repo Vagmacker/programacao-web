@@ -1,20 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { CategoryModule } from './domain/category/category.module';
 
 import { AppComponent } from './app.component';
-import { CategorySaveComponent } from './domain/category/category-save/category-save.component';
-import { CategoryListComponent } from './domain/category/category-list/category-list.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    CategorySaveComponent,
-    CategoryListComponent
+    AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    CategoryModule
   ],
   providers: [],
   bootstrap: [AppComponent]
