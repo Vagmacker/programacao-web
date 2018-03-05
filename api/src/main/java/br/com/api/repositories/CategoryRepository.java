@@ -1,6 +1,6 @@
 package br.com.api.repositories;
 
-import br.com.api.entities.Category;
+import br.com.api.models.entities.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

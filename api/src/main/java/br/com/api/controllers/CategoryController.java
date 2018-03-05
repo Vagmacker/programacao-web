@@ -1,11 +1,13 @@
 package br.com.api.controllers;
 
-import br.com.api.entities.Category;
+import br.com.api.models.entities.Category;
 import br.com.api.services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import java.util.List;
-import java.util.Optional;
+
+import javax.validation.Valid;
 
 /**
  * Classe de controle referente a 'Categorias'.
@@ -23,8 +25,8 @@ public class CategoryController {
      * @return {@link Category}
      */
     @GetMapping
-    public List<Category> getAll() {
-        return this.categoryService.findAll();
+    public ResponseEntity<?> getAll() {
+        return ResponseEntity.status(HttpStatus.OK).body(this.categoryService.findAll());
     }
 
     /**
@@ -34,24 +36,40 @@ public class CategoryController {
      * @return {@link Category}
      */
     @GetMapping("/{id}")
-    public Optional<Category> getOne(@PathVariable("id") Long id) {
-        return this.categoryService.findOne(id);
+    public ResponseEntity<?> getOne(@PathVariable("id") Long id) {
+        return ResponseEntity.status(HttpStatus.OK).body(this.categoryService.findOne(id));
     }
 
     /**
-     * Valida o preenchimento dos campos obrigatorios.
+     * Salva uma categoria.
      *
-     * @param category
+     * @param category : Category
+     * @return {@link Category}
      */
-    private void validarCamposObrigatorios(Category category) throws Exception {
-        boolean errorExists = false;
+    @PostMapping
+    public ResponseEntity<?> save(@Valid @RequestBody Category category) {
+        return ResponseEntity.status(HttpStatus.OK).body(this.categoryService.save(category));
+    }
 
-        if (category.getName() == null) {
-            errorExists = true;
-        }
+    /**
+     * Atualiza uma categoria.
+     *
+     * @param category : {@link Category}
+     * @return {@link Category}
+     */
+    @PutMapping
+    public ResponseEntity<?> update(@Valid @RequestBody Category category) {
+        return ResponseEntity.status(HttpStatus.OK).body(this.categoryService.update(category));
+    }
 
-        if (errorExists) {
-            throw new Exception();
-        }
+    /**
+     * Deleta uma categoria.
+     *
+     * @param id : Long
+     * @return {@link ResponseEntity}
+     */
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> delete(@PathVariable("id") Long id) {
+        return ResponseEntity.status(HttpStatus.OK).body(this.categoryService.delete(id));
     }
 }

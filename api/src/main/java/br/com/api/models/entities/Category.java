@@ -1,4 +1,4 @@
-package br.com.api.entities;
+package br.com.api.models.entities;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -9,7 +9,7 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "categories")
-public class Category  implements Serializable {
+public class Category implements Serializable {
 
     /**
      * Construtor da classe.
@@ -20,7 +20,7 @@ public class Category  implements Serializable {
     /**
      * Construtor da classe.
      *
-     * @param id: Long
+     * @param id:   Long
      * @param name: String
      */
     public Category(Long id, @NotEmpty String name) {

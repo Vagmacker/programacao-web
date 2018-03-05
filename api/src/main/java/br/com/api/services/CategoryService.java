@@ -1,25 +1,26 @@
 package br.com.api.services;
 
-import br.com.api.entities.Category;
-import java.util.List;
-import java.util.Optional;
+import br.com.api.models.entities.Category;
+import br.com.api.repositories.CategoryRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Service;
 
 /**
- * Interface de negócio referente a 'Categorias'.
+ * Classe de negócio referente a 'Categorias'.
  */
-public interface CategoryService {
+@Service
+public class CategoryService extends AbstractService<Category> {
 
-    /**
-     * Retorna todas as {@link Category}.
-     *
-     * @return @link Category
-     */
-    public List<Category> findAll();
+    @Autowired
+    private CategoryRepository categoryRepository;
 
-    /**
-     * Retorna uma {@link Category} conforme o id.
-     *
-     * @return @link Category
-     */
-    public Optional<Category> findOne(Long id);
+    @Override
+    public JpaRepository<Category, Long> getRepository() {
+        return categoryRepository;
+    }
+
+    @Override
+    public void validateRequiredFields(Category category) {
+    }
 }
