@@ -59,7 +59,7 @@ public class CategoryController {
      */
     @PutMapping
     public ResponseEntity<?> update(@Valid @RequestBody Category category) {
-        return ResponseEntity.status(HttpStatus.OK).body(this.categoryService.update(category));
+        return ResponseEntity.status(HttpStatus.OK).body(this.categoryService.update(category, category.getId()));
     }
 
     /**

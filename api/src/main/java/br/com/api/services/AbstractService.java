@@ -56,13 +56,15 @@ public abstract class AbstractService<T> {
      * Atualiza um registro.
      *
      * @param entitie : T
+     * @param id : Long
      * @return {@link BaseResponse}
      */
     @Transactional
-    public BaseResponse update(T entitie) {
+    public BaseResponse update(T entitie, Long id) {
         T data = null;
         String message;
 
+        this.ifExists(id);
         this.validateRequiredFields(entitie);
 
         try {
@@ -86,6 +88,8 @@ public abstract class AbstractService<T> {
         T data = null;
         String message;
 
+        this.ifExists(id);
+
         try {
             this.getRepository().deleteById(id);
             message = "Deletado com sucesso";
@@ -94,6 +98,19 @@ public abstract class AbstractService<T> {
         }
 
         return new BaseResponse("", message);
+    }
+
+    /**
+     * Metódo que verifica se existe registro a partir do id informado.
+     *
+     * @param id : Long
+     */
+    private void ifExists(Long id) {
+        T data = this.getRepository().getOne(id);
+
+        if (data == null) {
+            throw new RuntimeException("Registro não encontrado");
+        }
     }
 
     public abstract void validateRequiredFields(T entitie);
