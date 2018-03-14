@@ -1,4 +1,7 @@
+import { Router } from '@angular/router';
+import { Category } from './../category';
 import { Component, OnInit } from '@angular/core';
+import { CategoryService } from '../category.service';
 
 @Component({
   selector: 'app-category-save',
@@ -7,9 +10,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategorySaveComponent implements OnInit {
 
-  constructor() { }
+  public category: Category;
 
-  ngOnInit() {
+  /**
+   * Construtor da classe.
+   *
+   * @param categoryService
+   * @param router
+   */
+  constructor(private categoryService: CategoryService, private router: Router) {
+    this.category = new Category();
   }
 
+  ngOnInit() {}
+
+  /**
+   * Método que salva uma nova categoria.
+   */
+  public save() {
+    return this.categoryService.save(this.category).subscribe(
+      response => {
+        this.router.navigate(['/categories']);
+      });
+  }
 }

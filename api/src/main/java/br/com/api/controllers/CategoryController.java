@@ -12,6 +12,7 @@ import javax.validation.Valid;
 /**
  * Classe de controle referente a 'Categorias'.
  */
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/categories")
 public class CategoryController {
