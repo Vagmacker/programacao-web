@@ -2,6 +2,7 @@ package br.com.api.controllers;
 
 import br.com.api.models.entities.Category;
 import br.com.api.services.CategoryService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,13 +13,18 @@ import javax.validation.Valid;
 /**
  * Classe de controle referente a 'Categorias'.
  */
-@CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/api/categories")
+@RequestMapping("/categories")
+@CrossOrigin(origins = "http://localhost:4200")
+@Api(value = "Categories Endpoint")
 public class CategoryController {
 
+    private final CategoryService categoryService;
+
     @Autowired
-    private CategoryService categoryService;
+    public CategoryController(CategoryService categoryService) {
+        this.categoryService = categoryService;
+    }
 
     /**
      * Retorna todas as categorias.
