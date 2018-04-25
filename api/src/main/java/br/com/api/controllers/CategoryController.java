@@ -3,6 +3,7 @@ package br.com.api.controllers;
 import br.com.api.models.entities.Category;
 import br.com.api.services.CategoryService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,10 +14,10 @@ import javax.validation.Valid;
 /**
  * Classe de controle referente a 'Categorias'.
  */
+@Api(description = "Classe de controle referente a 'Categorias'.")
 @RestController
 @RequestMapping("/categories")
 @CrossOrigin(origins = "http://localhost:4200")
-@Api(value = "Categories Endpoint")
 public class CategoryController {
 
     private final CategoryService categoryService;
@@ -31,6 +32,7 @@ public class CategoryController {
      *
      * @return {@link Category}
      */
+    @ApiOperation(value = "Retorna todas as categorias", response = Category[].class)
     @GetMapping
     public ResponseEntity<?> getAll() {
         return ResponseEntity.status(HttpStatus.OK).body(this.categoryService.findAll());
