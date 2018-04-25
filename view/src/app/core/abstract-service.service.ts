@@ -45,7 +45,7 @@ export class AbstractService {
         let httpParams = new HttpParams();
 
         Object.keys(params).forEach(key => {
-            httpParams = httpParams.append(key, params[key]);
+            httpParams = httpParams.set(key, params[key]);
         });
 
         return {params: httpParams};

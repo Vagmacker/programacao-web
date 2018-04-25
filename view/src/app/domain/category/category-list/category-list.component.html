@@ -16,7 +16,7 @@
           <td>
             <a href="#" title="Editar" [routerLink]="['/categories', 'edit', category.id]"><i class="fa fa-edit fa-pencil-square-o" aria-hidden="true"></i></a>
             <a href="#" title="Visualizar" [routerLink]="['/categories','show', category.id]"><i class="fa fa-view fa-eye" aria-hidden="true"></i></a>
-            <a href="#" title="Excluir"><i class="fa fa-delete fa-trash" aria-hidden="true"></i></a>
+            <a href="#" title="Excluir" (click)="delete(category.id)"><i class="fa fa-delete fa-trash" aria-hidden="true"></i></a>
           </td>
         </tr>
       </tbody>

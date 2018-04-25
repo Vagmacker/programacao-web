@@ -58,9 +58,9 @@ public class CategoryController {
      * @param category : {@link Category}
      * @return {@link Category}
      */
-    @PutMapping
-    public ResponseEntity<?> update(@Valid @RequestBody Category category) {
-        return ResponseEntity.status(HttpStatus.OK).body(this.categoryService.update(category, category.getId()));
+    @PutMapping("/{id}")
+    public ResponseEntity<?> update(@Valid @RequestBody Category category, @PathVariable Long id) {
+        return ResponseEntity.status(HttpStatus.OK).body(this.categoryService.update(category, id));
     }
 
     /**

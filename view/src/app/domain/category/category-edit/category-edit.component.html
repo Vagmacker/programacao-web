@@ -4,7 +4,7 @@
         <div class="col-md-6">
           <div class="form-group">
             <label>Nome:</label>
-            <input type="text" class="form-control" aria-describedby="Nome da categoria" value="{{ category.name }}">
+            <input type="text" class="form-control" [(ngModel)]="category.name" name="name" value="{{ category.name }}">
           </div>
         </div>
       </div>

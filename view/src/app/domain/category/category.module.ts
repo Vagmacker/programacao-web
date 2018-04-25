@@ -16,7 +16,7 @@ import { CategoryEditComponent } from './category-edit/category-edit.component';
     RouterModule,
     CategoryRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
   declarations: [
     CategorySaveComponent,

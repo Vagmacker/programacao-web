@@ -28,8 +28,8 @@ export class CategoryService extends AbstractService {
    *
    * @param data
    */
-  findOne(data: any): Observable<any> {
-    return this.http.get(this.getUrl() + '/' + data);
+  findOne(id: number): Observable<any> {
+    return this.http.get(this.getUrl() + '/' + id);
   }
 
   /**
@@ -47,7 +47,7 @@ export class CategoryService extends AbstractService {
    * @param category
    */
   update(category: Category): Observable<any> {
-    return this.http.put(this.getUrl(), {});
+    return this.http.put(this.getUrl() + '/' + category.id, category, this.getHeaders());
   }
 
   /**
@@ -55,7 +55,7 @@ export class CategoryService extends AbstractService {
    *
    * @param data
    */
-  delete(data: any): Observable<any> {
-    return this.http.delete(this.getUrl());
+  delete(id: number): Observable<any> {
+    return this.http.delete(this.getUrl() + '/' + id);
   }
 }

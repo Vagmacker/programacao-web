@@ -17,7 +17,8 @@ export class CategoryListComponent implements OnInit {
    *
    * @param categoryService
    */
-  constructor(private categoryService: CategoryService) { }
+  constructor(
+    private categoryService: CategoryService) { }
 
   /**
    * Função carregada quando o componente é solicitado.
@@ -26,5 +27,14 @@ export class CategoryListComponent implements OnInit {
     this.categoryService.findAll().subscribe(
       data => this.categories = data['data']
     );
+  }
+
+  /**
+   * Deleta uma categoria.
+   *
+   * @param id
+   */
+  delete(id: number) {
+    return this.categoryService.delete(id).subscribe();
   }
 }

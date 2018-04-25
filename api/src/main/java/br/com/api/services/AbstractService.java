@@ -1,5 +1,6 @@
 package br.com.api.services;
 
+import br.com.api.exceptions.CustomException;
 import br.com.api.models.dtos.BaseResponse;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.transaction.annotation.Transactional;
@@ -56,7 +57,7 @@ public abstract class AbstractService<T> {
      * Atualiza um registro.
      *
      * @param entitie : T
-     * @param id : Long
+     * @param id      : Long
      * @return {@link BaseResponse}
      */
     @Transactional
@@ -85,7 +86,6 @@ public abstract class AbstractService<T> {
      */
     @Transactional
     public BaseResponse delete(Long id) {
-        T data = null;
         String message;
 
         this.ifExists(id);
@@ -106,11 +106,7 @@ public abstract class AbstractService<T> {
      * @param id : Long
      */
     private void ifExists(Long id) {
-        T data = this.getRepository().getOne(id);
-
-        if (data == null) {
-            throw new RuntimeException("Registro não encontrado");
-        }
+        this.getRepository().findById(id).orElseThrow(() -> new CustomException("Registro não encontrado", null));
     }
 
     public abstract void validateRequiredFields(T entitie);

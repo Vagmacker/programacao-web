@@ -39,6 +39,9 @@ export class CategoryEditComponent implements OnInit {
    * Método que salva uma categoria.
    */
   public edit() {
-    // TODO
+    return this.categoryService.update(this.category).subscribe(
+      data => {
+        this.router.navigate(['/categories']);
+      });
   }
 }
