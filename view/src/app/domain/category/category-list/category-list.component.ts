@@ -17,8 +17,7 @@ export class CategoryListComponent implements OnInit {
    *
    * @param categoryService
    */
-  constructor(
-    private categoryService: CategoryService) { }
+  constructor(private categoryService: CategoryService) { }
 
   /**
    * Função carregada quando o componente é solicitado.

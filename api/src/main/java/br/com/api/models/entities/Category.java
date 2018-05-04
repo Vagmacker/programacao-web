@@ -11,7 +11,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * Classe de modelo referente a 'Categoria'.
+ * Classe de modelo referente a 'Categorias'.
  */
 @Entity
 @Table(name = "categories")
